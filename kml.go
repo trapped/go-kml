@@ -161,10 +161,9 @@ func (ce *CoordinatesElement) MarshalXML(e *xml.Encoder, start xml.StartElement)
 		if i != 0 {
 			s = " "
 		}
-		s += strconv.FormatFloat(c.Lon, 'f', -1, 64) + "," + strconv.FormatFloat(c.Lat, 'f', -1, 64)
-		if c.Alt != 0 {
-			s += "," + strconv.FormatFloat(c.Alt, 'f', -1, 64)
-		}
+		s += strconv.FormatFloat(c.Lon, 'f', -1, 64) +
+			"," + strconv.FormatFloat(c.Lat, 'f', -1, 64) +
+			"," + strconv.FormatFloat(c.Alt, 'f', 1, 64)
 		if err := e.EncodeToken(xml.CharData([]byte(s))); err != nil {
 			return err
 		}
